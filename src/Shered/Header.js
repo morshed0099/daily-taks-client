@@ -4,22 +4,23 @@ import { Link, NavLink } from 'react-router-dom';
 import { userAuth } from '../AuthProvider';
 
 const Header = () => {
-    const { user,logOut } = useContext(userAuth);
-    const handelLogout=()=>{
+    const { user, logOut } = useContext(userAuth);
+    const handelLogout = () => {
         logOut()
-        .then(()=>{
-         toast.success('logout successfully ')
-        }).catch(error=>toast.error(error.message))
+            .then(() => {
+                toast.success('logout successfully ')
+            }).catch(error => toast.error(error.message))
     }
-    
+
 
     const menuItems = <>
         <NavLink to='/' className='mr-2'>Home</NavLink>
+        <NavLink to='/addtask' className='mr-2'>Add Task</NavLink>
+        <NavLink to='/mytask' className='mr-2'>My Task</NavLink>
+        <NavLink to='/completetask' className='mr-2'>Complete Task</NavLink>
         {
             user?.email ? <>
-                <NavLink to='/addtask' className='mr-2'>Add Task</NavLink>
-                <NavLink to='/mytask' className='mr-2'>My Task</NavLink>
-                <NavLink to='/completetask' className='mr-2'>Complete Task</NavLink>
+
                 <button onClick={handelLogout}>LogOut</button>
 
 

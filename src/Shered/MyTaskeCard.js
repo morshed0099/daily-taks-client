@@ -11,7 +11,7 @@ const MyTaskeCard = ({ task,refetch }) => {
 
    const  handelComplete=(event,id)=>{
     event.preventDefault()
-         fetch(`http://localhost:5000/complete/${id}`,{
+         fetch(`https://daily-task-server-one.vercel.app/complete/${id}`,{
             method:"PATCH",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({complete:true})

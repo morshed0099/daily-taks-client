@@ -63,7 +63,7 @@ const SignUp = () => {
             photoURL
         }
         console.log(email,name,password,photoURL);
-        fetch('http://localhost:5000/users',{
+        fetch('https://daily-task-server-one.vercel.app/users',{
             method:"Post",
             headers:{"content-type":"application/json"},
             body:JSON.stringify(user)

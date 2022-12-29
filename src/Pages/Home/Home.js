@@ -7,7 +7,7 @@ const Home = () => {
     const { data: allTaks = [], refetch } = useQuery({
         queryKey: ['allTaks'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allTaks')
+            const res = await fetch('https://daily-task-server-one.vercel.app/allTaks')
             const data = await res.json()
             return data
         }

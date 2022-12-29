@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import CompleteTask from "../Pages/CompleteTask/CompleteTask";
 import SignUp from "../Pages/SignUp/SignUp";
 import Update from "../Pages/Update/Update";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router=createBrowserRouter([
@@ -20,7 +21,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/addtask',
-                element:<AddTask></AddTask>
+                element:<PrivateRoute><AddTask></AddTask></PrivateRoute>
                 
             },
             {
@@ -33,7 +34,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/completetask',
-                element:<CompleteTask></CompleteTask>
+                element:<PrivateRoute><CompleteTask></CompleteTask> </PrivateRoute>
             },
             {
                 path:'/signup',
@@ -42,7 +43,7 @@ export const router=createBrowserRouter([
             {
                 path:'/task/:id',
                 loader:({params})=>{
-                   return fetch(`http://localhost:5000/task/${params.id}`)
+                   return fetch(`https://daily-task-server-one.vercel.app/task/${params.id}`)
                 },
                 element:<Update></Update>
             }

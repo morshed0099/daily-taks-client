@@ -32,7 +32,7 @@ const Update = () => {
                
                 }
                    
-                fetch(`http://localhost:5000/tasks/${_id}`, {
+                fetch(`https://daily-task-server-one.vercel.app/tasks/${_id}`, {
                     method: "PATCH",
                     headers: { "content-type": "application/json" },
                     body: JSON.stringify(updateTask)

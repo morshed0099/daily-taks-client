@@ -2,12 +2,12 @@ import React from 'react';
 import { toast } from 'react-hot-toast';
 
 const CompleteTaskCard = ({ task, refetch }) => {
-    const { imgaes, description, title, _id } = task
+    const { imgaes, authorEmail, title, _id } = task
     const handelDelete = (e, id) => {
         const yes = window.confirm('are you sure delete')
         e.preventDefault();
         if (yes) {
-            fetch(`http://localhost:5000/completetask/${id}`, {
+            fetch(`https://daily-task-server-one.vercel.app/completetask/${id}`, {
                 method: "DELETE",
                 headers: { "content-type": "application/json" },
             }).then(res => res.json()).then(data => {                
@@ -22,7 +22,7 @@ const CompleteTaskCard = ({ task, refetch }) => {
 
     const handelIncomplete=(e,id)=>{
         e.preventDefault();
-        fetch(`http://localhost:5000/incomplete/${id}`,{
+        fetch(`https://daily-task-server-one.vercel.app/incomplete/${id}`,{
             method:"PATCH",
             headers:{"content-type":"application/json"},
             body:JSON.stringify()
@@ -53,7 +53,7 @@ const CompleteTaskCard = ({ task, refetch }) => {
                     <h1>{title}</h1>
                 </td>
                 <td>
-                    <span>{description}</span>
+                    <p>{authorEmail}</p >
                 </td>
                 <td>
                     <button onClick={(e) => handelDelete(e, _id)} className='btn btn-sm btn-primary mr-2'>Delete</button>
