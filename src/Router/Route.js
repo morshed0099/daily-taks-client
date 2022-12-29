@@ -6,6 +6,7 @@ import MyTask from "../Pages/MyTask/MyTask";
 import Login from "../Pages/Login/Login";
 import CompleteTask from "../Pages/CompleteTask/CompleteTask";
 import SignUp from "../Pages/SignUp/SignUp";
+import Update from "../Pages/Update/Update";
 
 
 export const router=createBrowserRouter([
@@ -37,6 +38,13 @@ export const router=createBrowserRouter([
             {
                 path:'/signup',
                 element:<SignUp></SignUp>
+            },
+            {
+                path:'/task/:id',
+                loader:({params})=>{
+                   return fetch(`http://localhost:5000/task/${params.id}`)
+                },
+                element:<Update></Update>
             }
         ]
         

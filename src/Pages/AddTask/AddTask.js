@@ -5,9 +5,9 @@ import { userAuth } from '../../AuthProvider';
 const AddTask = () => {
 
     const { user ,setLoader,loader} = useContext(userAuth);
-    const userName = user.displayName;
-    const userEmail = user.email;
-    const userImage = user.photoURL;
+    const userName = user?.displayName;
+    const userEmail = user?.email;
+    const userImage = user?.photoURL;
     const date=new Date()
     const author = {
         userName,
@@ -40,6 +40,7 @@ const AddTask = () => {
                     imgaes,
                     author,
                     date,
+                    complete:false,
                
                 }
 
@@ -58,23 +59,24 @@ const AddTask = () => {
 
     }
     return (
-        <>
+        <>  
+             <h1 className='text-center text-3xl mt-3 mb-3 font-bold'> Add Task</h1>
             <form onSubmit={hadelTaskSubmit} className='mx-w-[1400px] mx-auto'>
                 <div className='m-3 p-3 gap-3 mx-8 rounded-2xl  shadow-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
 
                     <div>
                         <label className="label">
-                            <span className="label-text">Title</span>
+                            <span className="label-text">Type Title Here</span>
                         </label>
                         <input name='taksName' type="text" placeholder="Taks Name" className="input input-bordered w-full" />
                         <label className="label">
-                            <span className="label-text">Image</span>
+                            <span className="label-text">Upload Image</span>
                         </label>
-                        <input name='image' type="file" placeholder="Type here" className="input  w-full" />
+                        <input name='image' type="file" placeholder="Type here" className="border  w-full" />
                     </div>
                     <div>
                         <label className="label">
-                            <span className="label-text">Description</span>
+                            <span className="label-text">Write Description</span>
                         </label>
                         <textarea name='description' className="textarea w-full textarea-bordered" placeholder="Say details about your task"></textarea>
 

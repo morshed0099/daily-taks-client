@@ -27,6 +27,9 @@ const AuthProvider = ({children}) => {
     const loginWithEmail=(email,password)=>{
         return signInWithEmailAndPassword(auth,email,password)
     }
+    const logOut=()=>{
+        return signOut(auth)
+    }
     useEffect(()=>{
         const unsubscribe=onAuthStateChanged(auth,(currentUser)=>{
             setUser(currentUser);
@@ -41,7 +44,8 @@ const AuthProvider = ({children}) => {
         user,
         loader,
         setLoader,
-        createUserGithub
+        createUserGithub,
+        logOut
     }
     return (
         <div>
