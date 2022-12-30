@@ -13,9 +13,8 @@ const Header = () => {
     }
 
 
-    const menuItems = <>
-        <NavLink to='/' className='mr-2'>Home</NavLink>
-        <NavLink to='/addtask' className='mr-2'>Add Task</NavLink>
+    const menuItems = <>        
+        <NavLink to='/' className='mr-2'>Add Task</NavLink>
         <NavLink to='/mytask' className='mr-2'>My Task</NavLink>
         <NavLink to='/completetask' className='mr-2'>Complete Task</NavLink>
         {

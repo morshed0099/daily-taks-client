@@ -32,8 +32,7 @@ const MyTask = () => {
                     myTask.map(task => <MyTaskeCard
                         key={task._id}
                         task={task}
-                        refetch={refetch}
-                    
+                        refetch={refetch}                    
                     ></MyTaskeCard>)
                 }
             </div>

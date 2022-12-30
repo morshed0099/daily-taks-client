@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Home from "../Pages/Home/Home";
 import AddTask from "../Pages/AddTask/AddTask"
 import MyTask from "../Pages/MyTask/MyTask";
 import Login from "../Pages/Login/Login";
@@ -8,46 +7,52 @@ import CompleteTask from "../Pages/CompleteTask/CompleteTask";
 import SignUp from "../Pages/SignUp/SignUp";
 import Update from "../Pages/Update/Update";
 import PrivateRoute from "./PrivateRoute";
+import Details from "../Pages/Details/Details";
 
 
-export const router=createBrowserRouter([
+
+export const router = createBrowserRouter([
     {
-        path:'',
-        element:<Main></Main>,
-        children:[
+        path: '',
+        element: <Main></Main>,
+        children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <AddTask></AddTask>
             },
             {
-                path:'/addtask',
-                element:<PrivateRoute><AddTask></AddTask></PrivateRoute>
-                
+                path: '/myTask',
+                element: <MyTask></MyTask>
+            },
+
+            {
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/mytask',
-                element:<MyTask></MyTask>
+                path: '/completetask',
+                element: <CompleteTask></CompleteTask>
             },
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/signup',
+                element: <SignUp></SignUp>
             },
             {
-                path:'/completetask',
-                element:<PrivateRoute><CompleteTask></CompleteTask> </PrivateRoute>
-            },
-            {
-                path:'/signup',
-                element:<SignUp></SignUp>
-            },
-            {
-                path:'/task/:id',
-                loader:({params})=>{
-                   return fetch(`https://daily-task-server-one.vercel.app/task/${params.id}`)
+                path: '/task/:id',
+                loader: ({ params }) => {
+                    return fetch(`https://daily-task-server-one.vercel.app/task/${params.id}`)
                 },
-                element:<Update></Update>
+                element: <Update></Update>
+            },
+            {
+                path: '/details/:id',
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/details/${params.id}`)
+                },
+                element:<Details></Details>
             }
+
         ]
-        
+
     }
 ]) 

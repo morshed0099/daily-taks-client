@@ -53,7 +53,7 @@ const CompleteTaskCard = ({ task, refetch }) => {
                     <h1>{title}</h1>
                 </td>
                 <td>
-                    <p>{authorEmail}</p >
+                    <h1>{authorEmail}</h1>
                 </td>
                 <td>
                     <button onClick={(e) => handelDelete(e, _id)} className='btn btn-sm btn-primary mr-2'>Delete</button>

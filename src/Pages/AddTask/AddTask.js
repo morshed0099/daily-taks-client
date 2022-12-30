@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { userAuth } from '../../AuthProvider';
 
 const AddTask = () => {
-
+      const navigate=useNavigate()
     const { user ,setLoader,loader} = useContext(userAuth);
     const userName = user?.displayName;
     const userEmail = user?.email;
@@ -22,7 +23,9 @@ const AddTask = () => {
         const description = form.description.value;
         const image = form.image.files[0];
         const authorEmail = userEmail;
-
+         if(!user){
+            return navigate('/login')
+         }
         const formData = new FormData();
         formData.append('image', image);
         const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_KEY}`
@@ -40,10 +43,9 @@ const AddTask = () => {
                     imgaes,
                     author,
                     date,
-                    complete:false,
-               
+                    complete:false,               
                 }
-
+                
                 fetch('https://daily-task-server-one.vercel.app/tasks', {
                     method: "POST",
                     headers: { "content-type": "application/json" },
@@ -60,10 +62,9 @@ const AddTask = () => {
     }
     return (
         <>  
-             <h1 className='text-center text-3xl mt-3 mb-3 font-bold'> Add Task</h1>
-            <form onSubmit={hadelTaskSubmit} className='mx-w-[1400px] mx-auto'>
-                <div className='m-3 p-3 gap-3 mx-8 rounded-2xl  shadow-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
-
+             <h1 className='text-center text-3xl  mt-3 mb-3 font-bold'> Add Task</h1>
+            <form  onSubmit={hadelTaskSubmit} className='mx-w-[1400px] mx-auto px-8'>
+                <div  className='max-w-[800px] mx-auto m-3 p-3 gap-3 mb-14 rounded-2xl  shadow-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
                     <div>
                         <label className="label">
                             <span className="label-text">Type Title Here</span>
@@ -82,8 +83,6 @@ const AddTask = () => {
 
                         <button className='btn btn-sm btn-primary w-full'>{loader ?"please wait ...":"Save Taks"}</button>
                     </div>
-
-
                 </div>
             </form>
         </>
