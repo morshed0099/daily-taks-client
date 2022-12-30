@@ -3,17 +3,17 @@ import { toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 
 const Update = () => {
-    const task=useLoaderData()
-    const {title,description,imgaes,_id}=task
-    console.log(task,'linke');
+    const task = useLoaderData()
+    const { title, description, imgaes, _id } = task
+    console.log(task, 'linke');
     const handelUpdate = (event) => {
-   
+
         event.preventDefault();
         const form = event.target;
         const upTitle = form.taksName.value;
         const upDescription = form.description.value;
         const image = form.image.files[0];
-   
+
 
         const formData = new FormData();
         formData.append('image', image);
@@ -25,29 +25,30 @@ const Update = () => {
             .then(data => {
                 const upImgaes = data.data.display_url
 
-                const updateTask={
+                const updateTask = {
                     upTitle,
-                 upDescription,                  
-                    upImgaes,                  
-               
+                    upDescription,
+                    upImgaes,
+
                 }
-                   
-                fetch(`https://daily-task-server-one.vercel.app/tasks/${_id}`, {
+
+                fetch(`https://daily-task-server-morshed0099.vercel.app/tasks/${_id}`, {
                     method: "PATCH",
                     headers: { "content-type": "application/json" },
                     body: JSON.stringify(updateTask)
-                }).then(res=>res.json()).then(data=>{
-                   if(data.modifiedCount>0){
-                    toast.success("updated successfully");
-                   }
+                }).then(res => res.json()).then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success("updated successfully");
+                    }
                 })
             })
 
     }
     return (
-    <>
-        <form onSubmit={handelUpdate} className='mx-w-[1400px] mx-auto'>
-                <div className='m-3 p-3 gap-3 mx-8 rounded-2xl  shadow-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
+        <>
+            <h1 className='text-center text-3xl  mt-3 mb-3 font-bold'>Task Update Here</h1>
+            <form onSubmit={handelUpdate} className='mx-w-[1240px] p-8 mx-auto'>
+                <div className='m-3 p-3 gap-3  rounded-2xl max-w-[800px] mx-auto shadow-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
 
                     <div>
                         <label className="label">

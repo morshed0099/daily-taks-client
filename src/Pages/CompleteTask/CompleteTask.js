@@ -9,7 +9,7 @@ const CompleteTask = () => {
     const { data: completeTsk = [],refetch,isFetching } = useQuery({
         queryKey: ['completeTsk'],
         queryFn: async () => {
-            const res = await fetch(`https://daily-task-server-one.vercel.app/completetask/${user?.email}`)
+            const res = await fetch(`https://daily-task-server-morshed0099.vercel.app/completetask/${user?.email}`)
             const data = res.json()
             return data;
         }

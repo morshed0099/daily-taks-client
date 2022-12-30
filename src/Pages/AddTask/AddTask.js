@@ -46,7 +46,7 @@ const AddTask = () => {
                     complete:false,               
                 }
                 
-                fetch('https://daily-task-server-one.vercel.app/tasks', {
+                fetch('https://daily-task-server-morshed0099.vercel.app/tasks', {
                     method: "POST",
                     headers: { "content-type": "application/json" },
                     body: JSON.stringify(task)

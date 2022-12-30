@@ -7,7 +7,7 @@ const CompleteTaskCard = ({ task, refetch }) => {
         const yes = window.confirm('are you sure delete')
         e.preventDefault();
         if (yes) {
-            fetch(`https://daily-task-server-one.vercel.app/completetask/${id}`, {
+            fetch(`https://daily-task-server-morshed0099.vercel.app/completetask/${id}`, {
                 method: "DELETE",
                 headers: { "content-type": "application/json" },
             }).then(res => res.json()).then(data => {                
@@ -22,7 +22,7 @@ const CompleteTaskCard = ({ task, refetch }) => {
 
     const handelIncomplete=(e,id)=>{
         e.preventDefault();
-        fetch(`https://daily-task-server-one.vercel.app/incomplete/${id}`,{
+        fetch(`https://daily-task-server-morshed0099.vercel.app/incomplete/${id}`,{
             method:"PATCH",
             headers:{"content-type":"application/json"},
             body:JSON.stringify()

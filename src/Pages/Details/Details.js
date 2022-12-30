@@ -3,14 +3,14 @@ import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import DetailsCard from './DetailsCard';
 
-const Details = () => { 
- 
-   const detailsTask = useLoaderData()
-   const navigate=useNavigate()
-   
+const Details = () => {
+    const detailsTask = useLoaderData()
+    console.log(detailsTask,'linewwww');
+    const navigate = useNavigate()
+
     const handelComplete = (event, id) => {
         event.preventDefault()
-        fetch(`https://daily-task-server-one.vercel.app/complete/${id}`, {
+        fetch(`https://daily-task-server-morshed0099.vercel.app/complete/${id}`, {
             method: "PATCH",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ complete: true })

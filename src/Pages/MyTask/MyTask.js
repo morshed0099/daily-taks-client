@@ -11,7 +11,7 @@ const MyTask = () => {
 
         queryKey: ['myTaks'],
         queryFn: async () => {
-            const res = await fetch(`https://daily-task-server-one.vercel.app/myTask?email=${user?.email}`)
+            const res = await fetch(`https://daily-task-server-morshed0099.vercel.app/myTask?email=${user?.email}`)
             const data = await res.json()
             return data;
         }
@@ -24,7 +24,7 @@ const MyTask = () => {
    
 
     return (
-        <div>
+        <div className='max-w-[1240px]'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 mx-4'>
                 {
 
